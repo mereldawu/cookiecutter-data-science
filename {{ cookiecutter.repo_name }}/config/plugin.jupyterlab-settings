@@ -1,0 +1,53 @@
+{
+  "notebook:hide-cell-code": {
+    "command": "notebook:hide-cell-code",
+    "keys": [
+      "Ctrl O"
+    ],
+    "selector": ".jp-Notebook:focus"
+  },    
+
+  "notebook:show-cell-code": {
+    "command": "notebook:show-cell-code",
+    "keys": [
+      "Ctrl E"
+    ],
+    "selector": ".jp-Notebook:focus"
+  },    
+
+  "notebook:clear-all-outputs": {
+    "command": "notebook:hide-all-cell-outputs",
+    "keys": [
+      "Ctrl Shift L"
+    ],
+    "selector": ".jp-Notebook:focus"
+  },
+
+  "notebook:hide-all-cell-code": {
+    "command": "notebook:hide-all-cell-code",
+    "keys": [
+      "Ctrl Shift O"
+    ],
+    "selector": ".jp-Notebook:focus"
+  }, 
+      
+  "notebook:show-all-cell-code": {
+    "command": "notebook:show-all-cell-code",
+    "keys": [
+      "Ctrl Shift E"
+    ],
+    "selector": ".jp-Notebook:focus"
+  },
+      
+    "kernelmenu:restart-and-clear": {
+      "command": "kernelmenu:restart-and-clear",
+      "keys": [
+        "0",
+        "1"
+      ],
+      "selector": "[data-jp-kernel-user]:focus",
+      "title": "Restart Kernel and Clear",
+      "category": "Kernel Operations"
+    }
+
+}

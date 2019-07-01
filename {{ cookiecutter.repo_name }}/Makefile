@@ -7,7 +7,7 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = s3://
 PROFILE = default
-PROJECT_NAME = rbb_driver_optimiser
+PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = python
 
 ## Docker
@@ -15,7 +15,7 @@ export DOCKER=docker
 export START_DOCKER_CONTAINER
 export IMAGE_NAME=$(PROJECT_NAME)-image
 export CONTAINER_NAME=$(PROJECT_NAME)-container
-export JUPYTER_HOST_PORT=10000
+export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=10000
 export HTTP_PROXY=http://websenseproxy.standardbank.co.za:8080
 export HTTPS_PROXY=https://websenseproxy.standardbank.co.za:8080
@@ -38,6 +38,8 @@ build-container:
 start-container:
 	docker-compose up -d
 
+stop-container:
+	docker-compose down
 
 ## Install Python Dependencies
 requirements: test_environment

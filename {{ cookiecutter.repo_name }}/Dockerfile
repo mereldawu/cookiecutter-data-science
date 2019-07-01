@@ -21,6 +21,5 @@ COPY config/plugin.jupyterlab-settings  /opt/play/config/plugin.jupyterlab-setti
 COPY config/commands.jupyterlab-settings /opt/play/config/commands.jupyterlab-settings
 COPY config/jupyter_notebook_config.py /opt/play/config/jupyter_notebook_config.py 
 COPY config/start.py /opt/play/config/start.py
-COPY config/SAP_HANA_CLIENT /opt/play/sap_files/SAP_HANA_CLIENT
 RUN chmod +x /app/run.sh 
 RUN /app/run.sh
