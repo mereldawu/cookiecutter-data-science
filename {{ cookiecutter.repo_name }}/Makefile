@@ -1,14 +1,24 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: clean data lint requirements start-container
 
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-BUCKET = {{ cookiecutter.s3_bucket }}
-PROFILE = {{ cookiecutter.aws_profile }}
-PROJECT_NAME = {{ cookiecutter.repo_name }}
-PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
+BUCKET = s3://
+PROFILE = default
+PROJECT_NAME = rbb_driver_optimiser
+PYTHON_INTERPRETER = python
+
+## Docker
+export DOCKER=docker
+export START_DOCKER_CONTAINER
+export IMAGE_NAME=$(PROJECT_NAME)-image
+export CONTAINER_NAME=$(PROJECT_NAME)-container
+export JUPYTER_HOST_PORT=10000
+export JUPYTER_CONTAINER_PORT=10000
+export HTTP_PROXY=http://websenseproxy.standardbank.co.za:8080
+export HTTPS_PROXY=https://websenseproxy.standardbank.co.za:8080
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -19,6 +29,15 @@ endif
 #################################################################################
 # COMMANDS                                                                      #
 #################################################################################
+
+## Docker
+
+build-container:
+	docker-compose up -d --build 
+
+start-container:
+	docker-compose up -d
+
 
 ## Install Python Dependencies
 requirements: test_environment
