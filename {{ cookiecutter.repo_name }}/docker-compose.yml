@@ -13,7 +13,7 @@ services:
       HTTPS_PROXY: ${HTTPS_PROXY}
       JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64/
     volumes:
-      - ../:/opt/play
+      - ../:/opt/app
     ports:
       - "10000:10000"
       - "8000:8000"
