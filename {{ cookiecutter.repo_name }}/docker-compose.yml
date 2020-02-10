@@ -18,6 +18,6 @@ services:
       - "10000:10000"
       - "8000:8000"
     container_name: ${CONTAINER_NAME}
-    command: jupyter lab --notebook-dir=/opt/play/ --ip="0.0.0.0" --port=10000 --no-browser --allow-root
+    command: jupyter lab --notebook-dir=/opt/app/ --ip="0.0.0.0" --port=10000 --no-browser --allow-root
     stdin_open: true
     tty: true
