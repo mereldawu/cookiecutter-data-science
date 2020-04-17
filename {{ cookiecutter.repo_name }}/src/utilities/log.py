@@ -1,15 +1,21 @@
 import time
-import yaml
 import logging
-import logging.config
 from functools import wraps
 
-def get_logger():
+def setup_custom_logger(name):
+    formatter = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(module)s - %(message)s')
 
-    with open('src/logger_conf.yaml', 'rt') as f:
-        logger_config = yaml.safe_load(f.read())
-        logging.config.dictConfig(logger_config)
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger(name)
+
+    if (logger.hasHandlers()):
+        logger.handlers.clear()
+
+    handler = logging.StreamHandler()
+    handler.setFormatter(formatter)
+
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(handler)
+    logger.propagate = False
 
     return logger
 
@@ -26,7 +32,7 @@ def func_logger(orig_func):
 
     @wraps(orig_func)
     def wrapper(*args, **kwargs):
-        logging.info(f'Start')
+        logging.info(f'Start {orig_func}')
         return orig_func(*args, **kwargs)
 
     return wrapper
@@ -40,3 +46,4 @@ def func_timer(orig_func):
         return result
 
     return wrapper
+

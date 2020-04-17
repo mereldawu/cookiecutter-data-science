@@ -17,8 +17,6 @@ export IMAGE_NAME=$(PROJECT_NAME)-image
 export CONTAINER_NAME=$(PROJECT_NAME)-container
 export JUPYTER_HOST_PORT={{ cookiecutter.jupyter_host_port }}
 export JUPYTER_CONTAINER_PORT=10000
-export HTTP_PROXY=http://websenseproxy.standardbank.co.za:8080
-export HTTPS_PROXY=https://websenseproxy.standardbank.co.za:8080
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
